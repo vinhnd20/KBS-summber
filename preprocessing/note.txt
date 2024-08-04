@@ -1,0 +1,31 @@
+B18DCCN529_Tien: Nói rất nhỏ
+B19DCCN013_Anh: Nói nhanh, không rõ ràng
+B20DCCN680_Thuy: Type D file 2.wav sai yêu cầu (Loại)
+B20DCCN295_Hung: Type D file 1.wav sai yêu cầu (Loại)
+B19DCCN725_Vuong: Nói rất nhỏ
+B20DCCN703_Truc: Câu khẩu lệnh type A file 1.wav không đạt yêu cầu (Loại)
+B20DCCN568_Quynh_Tuan040: Nói hơi nhỏ
+B20DCCN745_Vu_Duong: Type D sai yêu cầu (Loại)
+B19DCCN467_Nghia_Chi: Sử dụng AI sinh audio (Loại)
+B20DCCN710_Truong: Type A file 1.wav khẩu lệnh đọc lặp 2 lần cũng như một số file khác, bị nhiễu tiếng thở, Type C các audio đều rỗng (Loại)
+B20DCCN738_Vinh_Khoa: Thiếu file 2.wav trong type A (Loại)
+B20DCCN667_Thien_Son: Type C file 1.wav sai yêu cầu (Loại)
+B20DCCN351_Huong_Dung: Type C file 1.wav sai yêu cầu (Loại)
+B20DCCN351_Huong_Bac: Type C file 2.wav sai yêu cầu (Loại)
+B20DCCN351_Huong: Type C sai yêu cầu, Type D file 1.wav sai yêu cầu (Loại)
+B19DCCN036_Anh: Type C file 1.wav sai yêu cầu (Loại)
+B19DCCN036_Anh_Hang: Type C file 1.wav sai yêu cầu (Loại)
+B19DCCN036_Anh_Chinh: Type C file 1.wav sai yêu cầu (Loại)
+B19DCCN036_Anh_Tam: Type C file 1.wav sai yêu cầu (Loại)
+B19DCCN036_Anh_Thuy: Type C file 1.wav sai yêu cầu (Loại)
+B20DCCN032_Quang: Các file audio đều từ các giọng nói của những người khác nhau (Loại)
+B20DCCN630_Tung_Cuong: Type A file 1.wav không rõ chữ "Mở"
+B19DCCN641_Thai: Nói rất nhỏ, Type C file 1.wav sai yêu cầu (Loại)
+B19DCCN133_Dung_Duong: Nói không rõ ràng
+B19DCCN133_Dung_Ngoc: Nói có tiếng vang
+B19DCCN133_Dung_Yen: Type A file 2.wav nói không rõ từ "Đóng"
+B19DCCN259_Hieu_Dep: Phát âm sai "Camera"
+B19DCCN259_Hieu: Type A file 1.wav phát sâm không rõ từ "lên"
+B20DCCN327_Huy_Uan715: Type B file 1.wav sai yêu cầu (loại)
+B20DCCN716_Uyen: Nói bị vang
+B19DCCN261_Hieu: Dùng AI sinh audio (loại)
