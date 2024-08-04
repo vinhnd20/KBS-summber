@@ -19,10 +19,16 @@ def extract_features(file_path):
 def load_data_for_speaker_verification(base_dir):
     X = []
     y = []
+    speakers = {}
     label_counter = 0
     for speaker_folder in os.listdir(base_dir):
+        if speaker_folder.isdigit() and int(speaker_folder) < 80:
+            continue
         speaker_path = os.path.join(base_dir, speaker_folder)
         if os.path.isdir(speaker_path):
+            if speaker_folder not in speakers:
+                speakers[speaker_folder] = label_counter
+                label_counter += 1
             for type_folder in os.listdir(speaker_path):
                 type_path = os.path.join(speaker_path, type_folder)
                 if os.path.isdir(type_path):
@@ -31,9 +37,8 @@ def load_data_for_speaker_verification(base_dir):
                             file_path = os.path.join(type_path, file_name)
                             features = extract_features(file_path)
                             X.append(features)
-                            y.append(label_counter)
-            label_counter += 1
-    return np.array(X), np.array(y)
+                            y.append(speakers[speaker_folder])
+    return np.array(X), np.array(y), speakers
 
 # Load data for fake voice recognition
 def load_data_for_fake_voice_recognition(base_dir):
@@ -80,7 +85,7 @@ def load_data_for_command_detection(base_dir):
 # Train models for each task and save them
 def train_and_save_models():
     # Speaker Verification Model
-    X_sv, y_sv = load_data_for_speaker_verification(base_dir)
+    X_sv, y_sv, speakers = load_data_for_speaker_verification(base_dir)
     X_train_sv, X_test_sv, y_train_sv, y_test_sv = train_test_split(X_sv, y_sv, test_size=0.2, random_state=42)
     scaler_sv = StandardScaler()
     X_train_sv = scaler_sv.fit_transform(X_train_sv)
@@ -89,6 +94,7 @@ def train_and_save_models():
     model_sv.fit(X_train_sv, y_train_sv)
     joblib.dump(model_sv, 'model_sv.pkl')
     joblib.dump(scaler_sv, 'scaler_sv.pkl')
+    joblib.dump(speakers, 'speakers.pkl')
 
     # Fake Voice Recognition Model
     X_fv, y_fv = load_data_for_fake_voice_recognition(base_dir)
