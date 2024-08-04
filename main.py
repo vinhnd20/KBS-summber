@@ -20,10 +20,9 @@ scaler_cd = joblib.load('scaler_cd.pkl')
 
 # Function to predict using trained models
 def predict(audio_file):
-    # Check if the file is in a folder that should be ignored
     folder_name = os.path.basename(os.path.dirname(os.path.dirname(audio_file)))
     if folder_name.isdigit() and int(folder_name) < 80:
-        return "Not Verified", 0.0, 1, 1  # Assuming fake voice and command detected for ignored folders
+        return "Not Verified", 0.0, 1, 1  # Giả định giọng giả và lệnh phát hiện cho thư mục bị bỏ qua
 
     features = extract_features(audio_file).reshape(1, -1)
 
@@ -33,10 +32,17 @@ def predict(audio_file):
     sv_result = np.argmax(sv_probabilities)
     sv_confidence = sv_probabilities[sv_result]
 
+    if sv_confidence < 0.5:  # Ngưỡng độ tin cậy để đánh dấu là "Not Verified"
+        return "Not Verified", sv_confidence, 1, 1
+
+    predicted_speaker = None
     for speaker, idx in speakers.items():
         if idx == sv_result:
             predicted_speaker = speaker
             break
+
+    if predicted_speaker is None:
+        return "Not Verified", sv_confidence, 1, 1
 
     # Fake Voice Recognition
     features_fv = scaler_fv.transform(features)
@@ -49,7 +55,7 @@ def predict(audio_file):
     return predicted_speaker, sv_confidence, fv_result[0], cd_result[0]
 
 # Example usage
-audio_file = "/home/vinh/KBS/preprocessing/32/Type A/1.wav"
+audio_file = "/home/vinh/KBS/wav/test/test.wav"
 predicted_speaker, sv_confidence, fv_result, cd_result = predict(audio_file)
 
 print(f"Speaker Verification Result: {'Not Verified' if predicted_speaker == 'Not Verified' else predicted_speaker}")
